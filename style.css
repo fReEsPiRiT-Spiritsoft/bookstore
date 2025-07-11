@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: rgb(7, 31, 39);
+}
+
+main {
+    background-color: rgb(5, 23, 30);
+}
+
+footer {
+    background-color: rgb(7, 31, 39);
+}
+
+.showBooks {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.showBooks h2 {
+    text-align: center;
+}
+.book-card {
+  max-width: 500px;
+  margin: 16px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 16px;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.book-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  background-color: rgb(7, 31, 39);
+  border-radius: 8px 8px 0 0;
+  color: #fff;
+}
+
+.book-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.book-genre {
+  font-size: 14px;
+  color: #888;
+  background-color: #f1f1f1;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background-color: rgba(26, 106, 133, 0.267);
+}
+
+.book-meta p {
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.book-comments {
+  margin-top: 16px;
+}
+
+.book-comments h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.comment {
+  font-size: 14px;
+  border-top: 1px solid #eee;
+  padding: 8px 0;
+}
+.book-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.book-image img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+.commentinput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 8px;
+}
