@@ -1,14 +1,16 @@
-function renderBooks(books) {
-    const bookList = document.getElementById('book-list');
-    bookList.innerHTML = '';
 
-    books.forEach((book, index) => {
-        const bookDiv = document.createElement('div');
-        bookDiv.className = 'book-item';
-        bookDiv.innerHTML = `
+function createBookElement(book, index) {
+    const bookDiv = document.createElement('div');
+    bookDiv.className = 'book-item';
+    bookDiv.innerHTML = getBookTemplate(book, index);
+    return bookDiv;
+}
+
+function getBookTemplate(book, index) {
+    return `
             <div class="book-card">
                 <div class="book-header">
-                    <h2>${book.name}</h2>
+                    <h2 class="name">${book.name}</h2>
                     <span class="book-genre">${book.genre}</span>
                 </div>
                 <div class="book-image">
@@ -16,7 +18,11 @@ function renderBooks(books) {
                 </div>
                 <div class="book-meta">
                     <p><strong>Author:</strong> ${book.author}</p>
-                    <p><strong>Likes:</strong> ❤️ ${book.likes.toLocaleString()}</p>
+                    <p><strong>Likes:</strong>  ${book.likes.toLocaleString()}
+                        <button class="like-btn" data-index="${index}">
+                        ${book.liked ? '❤️' : '🤍'}
+                        </button>
+                    </p>
                     <p><strong>Price:</strong> €${book.price.toFixed(2)}</p>
                     <p><strong>Year:</strong> ${book.publishedYear}</p>
                 </div>
@@ -26,16 +32,20 @@ function renderBooks(books) {
                     <h3>💬 Kommentare:</h3>
                     ${book.comments.map(comment => `
                         <div class="comment">
-                            <strong>${comment.name}:</strong> ${comment.comment}
+                            <b>${comment.name}:</b> ${comment.comment}
                         </div>
                     `).join('')}
                 </div>
             </div>
         `;
-        bookList.appendChild(bookDiv);
-    });
+}
 
-    // Event Listener für alle Absenden-Buttons
+function addEventListeners() {
+    addCommentListeners();
+    addLikeListeners();
+}
+
+function addCommentListeners() {
     document.querySelectorAll('.add-comment-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const idx = this.getAttribute('data-index');
@@ -43,10 +53,46 @@ function renderBooks(books) {
             const value = input.value.trim();
             if (value) {
                 books[idx].comments.push({ name: "Gast", comment: value });
-                renderBooks(books); // Neu rendern, damit Kommentar erscheint
+                renderBooks(books);
             }
         });
     });
 }
 
+function addLikeListeners() {
+    document.querySelectorAll('.like-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const idx = this.getAttribute('data-index');
+            books[idx].liked = !books[idx].liked;
+            if (books[idx].liked) {
+                books[idx].likes++;
+            } else {
+                books[idx].likes--;
+            }
+            localStorage.setItem('liked', JSON.stringify(books));
+            this.innerHTML = books[idx].liked ? '❤️' : '🤍';
+            renderBooks(books);
+        });
+    });
+}
+
+function renderBooks(books) {
+    const bookList = document.getElementById('book-list');
+    bookList.innerHTML = '';
+    
+    books.forEach((book, index) => {
+        const bookDiv = createBookElement(book, index);
+        bookList.appendChild(bookDiv);
+    });
+    
+    addEventListeners();
+}
+
+function getFromLocalStorage() {
+    const storedBooks = localStorage.getItem('liked');
+    return storedBooks ? JSON.parse(storedBooks) : [];
+}
+function init() {
+    renderBooks(getFromLocalStorage());
+}
 renderBooks(books);

@@ -15,7 +15,12 @@ main {
 footer {
     background-color: rgb(7, 31, 39);
 }
-
+/* .name {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    padding: 16px 0;
+} */
 .showBooks {
 
     max-width: 1200px;
@@ -25,8 +30,15 @@ footer {
 .showBooks h2 {
     text-align: center;
 }
+#book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
 .book-card {
   max-width: 500px;
+  height: 568px;
   margin: 16px auto;
   background-color: #fff;
   border-radius: 12px;
@@ -50,6 +62,7 @@ footer {
 .book-header h2 {
   font-size: 18px;
   margin: 0;
+  padding: 16px;
 }
 
 .book-genre {
@@ -68,6 +81,9 @@ footer {
 
 .book-comments {
   margin-top: 16px;
+  overflow-y: auto;
+  flex: 1;
+  max-height: 200px;
 }
 
 .book-comments h3 {
@@ -79,6 +95,7 @@ footer {
   font-size: 14px;
   border-top: 1px solid #eee;
   padding: 8px 0;
+  
 }
 .book-image {
   max-width: 100%;
@@ -100,14 +117,14 @@ footer {
   /* margin-bottom: 8px; */
 }
 .book-comments button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  height: 25px;
-  margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 34px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 25px;
+    margin: 5px;
 }
 .book-comments button:hover {
   background-color: #0056b3;
