@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'greate_vibes';
+  src: url(./fonts/Great_Vibes/GreatVibes-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'michroma';
+  src: url(./fonts/Michroma/Michroma-Regular.ttf) format('truetype') ;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,15 +15,15 @@
 h1 {
     text-align: center;
     color: #2b36cf;
-    font-family: 'Helvetica Neue', sans-serif;}
+    font-family: 'greate_vibes';
+    font-size: 60px;
+}
 header {
     background-color: rgb(7, 31, 39);
 }
-
 main {
     background-color: rgb(5, 23, 30);
 }
-
 footer {
     background-color: rgb(7, 31, 39);
     color: #2b36cf;
@@ -22,7 +31,8 @@ footer {
 .secondTitle {
     text-align: center;
     color: #626beb;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'greate_vibes';
+    font-size: 25px;
     
 }
 .showBooks {
@@ -41,16 +51,15 @@ footer {
     gap: 40px;
 }
 .book-card {
-  max-width: 500px;
+  width: 500px;
   height: 686px;
   margin: 16px auto;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 16px;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: sans-serif
 }
-
 .book-header {
   display: flex;
   justify-content: space-between;
@@ -62,13 +71,11 @@ footer {
   border-radius: 8px 8px 0 0;
   color: #fff;
 }
-
 .book-header h2 {
   font-size: 18px;
   margin: 0;
   padding: 16px;
 }
-
 .book-genre {
   font-size: 14px;
   color: #888;
@@ -77,24 +84,20 @@ footer {
   border-radius: 8px;
   background-color: rgba(26, 106, 133, 0.267);
 }
-
 .book-meta p {
   font-size: 15px;
   margin: 5px 0;
 }
-
 .book-comments {
   margin-top: 16px;
   overflow-y: auto;
   flex: 1;
-  max-height: 200px;
+  max-height: 290px;
 }
-
 .book-comments h3 {
   font-size: 16px;
   margin-bottom: 8px;
 }
-
 .comment {
   font-size: 14px;
   border-top: 1px solid #eee;
@@ -134,4 +137,25 @@ footer {
   background-color: #0056b3;
   box-shadow: #8613bb 0px 0px 2px;
     transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .book-card {
+        /* max-width: 100%; */
+        width: 100%;
+        margin: 16px 0;
+    }
+    .book-header h2 {
+        font-size: 16px;
+    }
+    .book-genre {
+        font-size: 12px;
+    }
+    .book-meta p {
+        font-size: 14px;
+    }
+    .book-comments h3 {
+        font-size: 14px;
+    }
+  
 }
