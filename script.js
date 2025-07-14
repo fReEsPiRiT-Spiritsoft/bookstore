@@ -6,6 +6,7 @@ function createBookElement(book, index) {
     return bookDiv;
 }
 
+
 function getBookTemplate(book, index) {
     return `
             <div class="book-card">
@@ -30,7 +31,7 @@ function getBookTemplate(book, index) {
                     <input type="text" class="commentinput" id="comment-input-${index}" placeholder="schreibe ein Kommentar..." required>
                     <button type="button" class="add-comment-btn" data-index="${index}">Absenden</button>
                     <h3>💬 Kommentare:</h3>
-                    ${book.comments.map(comment => `
+                    ${book.comments.slice().reverse().map(comment => `
                         <div class="comment">
                             <b>${comment.name}:</b> ${comment.comment}
                         </div>
@@ -40,10 +41,12 @@ function getBookTemplate(book, index) {
         `;
 }
 
+
 function addEventListeners() {
     addCommentListeners();
     addLikeListeners();
 }
+
 
 function addCommentListeners() {
     document.querySelectorAll('.add-comment-btn').forEach(btn => {
@@ -58,6 +61,7 @@ function addCommentListeners() {
         });
     });
 }
+
 
 function addLikeListeners() {
     document.querySelectorAll('.like-btn').forEach(btn => {
@@ -76,6 +80,7 @@ function addLikeListeners() {
     });
 }
 
+
 function renderBooks(books) {
     const bookList = document.getElementById('book-list');
     bookList.innerHTML = '';
@@ -88,10 +93,13 @@ function renderBooks(books) {
     addEventListeners();
 }
 
+
 function getFromLocalStorage() {
     const storedBooks = localStorage.getItem('liked');
     return storedBooks ? JSON.parse(storedBooks) : [];
 }
+
+
 function init() {
     renderBooks(getFromLocalStorage());
 }

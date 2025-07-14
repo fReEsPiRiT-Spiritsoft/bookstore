@@ -3,7 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+h1 {
+    text-align: center;
+    color: #2b36cf;
+    font-family: 'Helvetica Neue', sans-serif;}
 header {
     background-color: rgb(7, 31, 39);
 }
@@ -14,13 +17,14 @@ main {
 
 footer {
     background-color: rgb(7, 31, 39);
+    color: #2b36cf;
 }
-/* .name {
-    font-size: 24px;
-    color: #fff;
+.secondTitle {
     text-align: center;
-    padding: 16px 0;
-} */
+    color: #626beb;
+    font-family: 'Helvetica Neue', sans-serif;
+    
+}
 .showBooks {
 
     max-width: 1200px;
@@ -38,7 +42,7 @@ footer {
 }
 .book-card {
   max-width: 500px;
-  height: 568px;
+  height: 686px;
   margin: 16px auto;
   background-color: #fff;
   border-radius: 12px;
