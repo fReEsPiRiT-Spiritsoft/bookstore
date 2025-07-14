@@ -76,6 +76,25 @@ function addEventListeners() {
 }
 
 
+function addLikeListeners() {
+    document.querySelectorAll('.like-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const idx = this.getAttribute('data-index');
+            let currentBooks = getFromLocalStorage();
+            currentBooks[idx].liked = !currentBooks[idx].liked;
+            if (currentBooks[idx].liked) {
+                currentBooks[idx].likes++;
+            } else {
+                currentBooks[idx].likes--;
+            }
+            localStorage.setItem('bookData', JSON.stringify(currentBooks));
+            this.innerHTML = currentBooks[idx].liked ? '❤️' : '🤍';
+            renderBooks(currentBooks);
+        });
+    });
+}
+
+
 function addCommentListeners() {
     document.querySelectorAll('.add-comment-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -83,28 +102,11 @@ function addCommentListeners() {
             const input = document.getElementById(`comment-input-${idx}`);
             const value = input.value.trim();
             if (value) {
-                books[idx].comments.push({ name: "Gast", comment: value });
-                localStorage.setItem('comments', JSON.stringify(books));
-                renderBooks(books);
+                let currentBooks = getFromLocalStorage();
+                currentBooks[idx].comments.push({ name: "Gast", comment: value });
+                localStorage.setItem('bookData', JSON.stringify(currentBooks));
+                renderBooks(currentBooks);
             }
-        });
-    });
-}
-
-
-function addLikeListeners() {
-    document.querySelectorAll('.like-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const idx = this.getAttribute('data-index');
-            books[idx].liked = !books[idx].liked;
-            if (books[idx].liked) {
-                books[idx].likes++;
-            } else {
-                books[idx].likes--;
-            }
-            localStorage.setItem('liked', JSON.stringify(books));
-            this.innerHTML = books[idx].liked ? '❤️' : '🤍';
-            renderBooks(books);
         });
     });
 }
@@ -123,14 +125,9 @@ function renderBooks(books) {
 
 
 function getFromLocalStorage() {
-
-    const storedComments = localStorage.getItem('comments');
-    if (storedComments) {
-        return JSON.parse(storedComments);
-    }
-    const storedLiked = localStorage.getItem('liked');
-    if (storedLiked) {
-        return JSON.parse(storedLiked);
+    const storedData = localStorage.getItem('bookData');
+    if (storedData) {
+        return JSON.parse(storedData);
     }
     return books;
 }
@@ -139,6 +136,3 @@ function getFromLocalStorage() {
 function init() {
     renderBooks(getFromLocalStorage());
 }
-
-
-renderBooks(books);
