@@ -74,8 +74,6 @@ function getFromLocalStorage() {
 }
 
 
-
-
 function init() {
     renderBooks(getFromLocalStorage());
 }
