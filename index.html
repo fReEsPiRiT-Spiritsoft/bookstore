@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Manga-Verse P.Schmidt</title>
     <link rel="stylesheet" href="style.css">
     <script src="db.js" defer></script>
+    <script src="template.js" defer></script>
     <script src="script.js" defer></script>
     <link rel="icon" href="./img/fav.ico">
     
@@ -14,6 +15,7 @@
 <body onload="init()">
     <header>
         <h1>MangaVerse – Dein Tor zur japanischen Fantasie</h1>
+        <button onclick="showFavoritOverlay()" class="overlayBTN">Favoriten</button>
     </header>
     <main>
         <section id="showBooks" class="showBooks">
@@ -25,6 +27,16 @@
                 <input type="text" id="comment" placeholder="schreibe ein Kommentar..." required>
             </div>
         </section>
+
+    <div id="favoritOverlay">
+        <div class="overlayContent">
+            <h2>Deine Favoriten</h2>
+            <button class="closeOverlay" onclick="document.getElementById('favoritOverlay').style.display='none'">X</button>
+            <div id="favorit-list">
+                <!-- Favoriten werden hier angezeigt -->
+            </div>
+        </div>
+    </div>
     </main>
     <footer>
         <p>&copy; 2025 BookStore by Patrick Schmidt</p>

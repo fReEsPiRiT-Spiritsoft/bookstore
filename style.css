@@ -27,6 +27,10 @@ main {
 footer {
     background-color: rgb(7, 31, 39);
     color: #2b36cf;
+    text-align: center;
+    padding: 20px;
+    font-family: 'michroma';
+    font-size: 20px;
 }
 .secondTitle {
     text-align: center;
@@ -105,15 +109,24 @@ footer {
   
 }
 .book-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  width: 105px;         /* Maximalbreite des Bildes im Hover */
+  height: 163px;        /* Maximalhöhe, falls quadratisch */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;     /* Bild bleibt im Rahmen */
 }
 .book-image img {
   width: 100px;
   height: auto;
   border-radius: 8px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.book-image img:hover {
+  width: 105px;
+  border-radius: 9px;
 }
 .commentinput {
   width: 100%;
@@ -121,7 +134,7 @@ footer {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-top: 8px;
-  /* margin-bottom: 8px; */
+
 }
 .book-comments button {
     background-color: #007bff;
@@ -138,7 +151,75 @@ footer {
   box-shadow: #8613bb 0px 0px 2px;
     transition: background-color 0.3s ease;
 }
-
+#favoritOverlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.overlayContent {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 32px 24px 24px 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    position: relative;
+}
+.closeOverlay {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.closeOverlay:hover {
+    background: #c0392b;
+}
+#favorit-list {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+.fav-book {
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 16px;
+    width: 180px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+}
+.fav-book:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.fav-book img {
+    border-radius: 6px;
+    margin-bottom: 8px;
+    max-width: 100%;
+    height: auto;
+}
+.fav-book h3 {
+    font-size: 1.1rem;
+    margin: 0 0 6px 0;
+}
+.fav-book p {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0 0 8px 0;
+}
 @media (max-width: 768px) {
     .book-card {
         /* max-width: 100%; */
